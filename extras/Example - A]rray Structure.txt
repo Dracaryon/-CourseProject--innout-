@@ -1,0 +1,13 @@
+[0] => User Object ( 
+    [values:protected] => Array ( 
+        [name] => Admin 
+    )
+) 
+
+[1] => User Object ( [values:protected] => Array ( [name] => Chaves ) ) 
+
+[2] => User Object ( [values:protected] => Array ( [name] => Seu Barriga ) ) 
+
+[3] => User Object ( [values:protected] => Array ( [name] => Seu Madruga ) ) 
+
+[4] => User Object ( [values:protected] => Array ( [name] => Quico ) ) )
