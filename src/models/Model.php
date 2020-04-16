@@ -19,7 +19,10 @@ class Model {
     }
     
     public function __get($key) {
-        return $this->values[$key];
+        // if (isset($key)){
+            return $this->values[$key];
+        // }
+        
     }
 
     public function __set($key, $value){
@@ -61,7 +64,7 @@ class Model {
     //aula 274:
     //metódo pra inserir dados no BD
     //"implode()" transforma um array em string
-    public function save() {
+    public function insert() {
         $sql = "INSERT INTO " . static::$tableName . " ("
             . implode(",", static::$columns) . ") VALUES (";
         foreach(static::$columns as $col) {
@@ -71,7 +74,19 @@ class Model {
         //No último foreach, haverá uma vírgula, mas o parenteses precisa ser fechado. O metódo abaixo remove a vírgula e coloca uma vírgula no final da string.
         $sql[strlen($sql) - 1] = ')';
         $id = Database::executeSQL($sql);
+        echo "$id";
         $this->id = $id;
+       
+    }
+
+    public function update() {
+        $sql = "UPDATE " . static::$tableName . " SET ";
+        foreach(static::$columns as $col) {
+            $sql .= " ${col} = " . static::getFormatedValue($this->$col) . ",";
+        }
+        $sql[strlen($sql) - 1] = ' ';
+        $sql .= "WHERE id = {$this->id}";
+        Database::executeSQL($sql);
     }
 
     //trabalhar a clausula where

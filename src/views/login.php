@@ -27,7 +27,7 @@
                 <div class="form-group">
                     <label for="email">E-mail</label>
                     <input type="email" id="email" name="email" class="form-control <?= $errors['email'] ? 'is-invalid' : ''?>" 
-                    value="<?= $_POST['email'] ?>";
+                    value="<?= isset($_POST['email']) ? $_POST['email'] : "Informe o seu e-mail" ?>";
                     placeholder="Informe o seu e-mail" autofocus>
                     <div class="invalid-feedback">
                         <?= $errors['email']?>
